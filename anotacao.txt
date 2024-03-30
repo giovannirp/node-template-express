@@ -1,0 +1,5 @@
+instalando 
+- express
+- express-handlebars
+- nodemon
+- mysql
