@@ -13,6 +13,20 @@ app.set("view engine", "handlebars");
 app.get("/", (req, res) => {
   // res.send("Mandando info na tela");
   res.render("home")
-})
+});
 
-app.listen(3000);
+const conn = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "mercadinho"
+});
+
+conn.connect(function (err) {
+  if (err) {
+    console.log(err)
+  }
+
+  console.log("Conectou ao MYSQL");
+  app.listen(3000);
+})
