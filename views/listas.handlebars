@@ -1,0 +1,18 @@
+<h1>Listas bem vindo!</h1>
+
+<table border="1">
+  <tr>
+    <th>Id</th>
+    <th>Produto</th>
+    <th>Preço</th>
+    <th>Descrição</th>
+  </tr>
+  {{#each lista}}
+  <tr>
+    <td>#{{this.id}}</td>
+    <td>{{this.produto}}</td>
+    <td>{{this.preco}}</td>
+    <td>{{this.descricao}}</td>
+  </tr>
+  {{/each}}
+</table>

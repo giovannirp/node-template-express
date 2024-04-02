@@ -15,6 +15,22 @@ app.get("/", (req, res) => {
   res.render("home")
 });
 
+//listando produtos
+app.get("/lista", (req, res) => {
+  const sql = "SELECT * from produtos"
+
+  conn.query(sql, function (err, data) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    const lista = data;
+    //console.log(lista);
+    res.render("listas", { lista })
+  });
+})
+
 const conn = mysql.createConnection({
   host: "localhost",
   user: "root",
