@@ -4,6 +4,13 @@ const mysql = require("mysql");
 
 const app = express();
 
+// Confira o middleware para verificar solicitações com o tipo conteúdo body
+app.use(
+  express.urlencoded({
+    extended: true
+  })
+)
+
 // Configura o middleware para analisar solicitações com o tipo de conteúdo 'application/json'
 app.use(express.json())
 
@@ -29,7 +36,25 @@ app.get("/lista", (req, res) => {
     //console.log(lista);
     res.render("listas", { lista })
   });
-})
+});
+
+// cadastrando
+app.post("/lista/insertProdutos",(req, res) => {
+  const produto = req.body.produto;
+  const preco = req.body.preco;
+  const descricao = req.body.descricao;
+
+  const sql = `INSERT INTO produtos (produto, preco, descricao) values ('${produto}', '${preco}', '${descricao}')`;
+  
+  conn.query(sql, function (err) {
+    if (err) {
+      console.log("erro", err);
+      return false;
+    }
+
+    res.redirect("/lista");
+  })
+});
 
 const conn = mysql.createConnection({
   host: "localhost",
