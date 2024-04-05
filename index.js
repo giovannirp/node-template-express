@@ -56,6 +56,22 @@ app.post("/lista/insertProdutos",(req, res) => {
   })
 });
 
+// Listando e buscando por ID
+app.get('/lista/:id', (req, res) => {
+  const id = req.params.id;
+  const sql = `SELECT * FROM produtos WHERE id = ${id}`;
+
+  conn.query(sql, function(err, data) {
+    if (err) {
+      console.log(err);
+    }
+
+    const detalhes = data[0];
+
+    res.render('detalhes', { detalhes })
+  });
+});
+
 const conn = mysql2.createConnection({
   host: "localhost",
   user: "root",
