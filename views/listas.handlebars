@@ -13,6 +13,7 @@
     <th>Produto</th>
     <th>Preço</th>
     <th>Descrição</th>
+    <th class="text-center">Detalhes</th>
   </tr>
   {{#each lista}}
   <tr>
@@ -20,6 +21,9 @@
     <td>{{this.produto}}</td>
     <td>{{this.preco}}</td>
     <td>{{this.descricao}}</td>
+    <td class="text-center">
+      <a href="lista/{{this.id}}">Ver detalhes</a>
+    </td>
   </tr>
   {{/each}}
 </table>
