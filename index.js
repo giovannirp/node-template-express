@@ -72,6 +72,21 @@ app.get('/lista/:id', (req, res) => {
   });
 });
 
+// removendo item
+app.post('/lista/remove/:id', (req, res) => {
+  const id = req.params.id;
+
+  const sql = `DELETE from produtos WHERE id = ${id}`;
+
+  conn.query(sql, function(err) {
+    if (err) {
+      console.log(err);
+    }
+
+    res.redirect('/lista');
+  })
+});
+
 const conn = mysql2.createConnection({
   host: "localhost",
   user: "root",

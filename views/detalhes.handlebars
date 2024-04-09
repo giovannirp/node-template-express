@@ -4,5 +4,9 @@
     <h5 class="card-title">{{detalhes.produto}}</h5>
     <strong>{{detalhes.preco}}</strong>
     <p class="card-text">{{detalhes.descricao}}</p>
+    
+    <form action="/lista/remove/{{detalhes.id}}" method="post">
+      <input type="submit" value="Remover" class="btn btn-danger" />
+    </form>
   </div>
 </div>
