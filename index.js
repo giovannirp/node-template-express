@@ -1,6 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const mysql = require("mysql");
+const mysql2 = require("mysql2");
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.get("/lista", (req, res) => {
   });
 })
 
-const conn = mysql.createConnection({
+const conn = mysql2.createConnection({
   host: "localhost",
   user: "root",
   password: "",
