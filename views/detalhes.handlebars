@@ -6,7 +6,8 @@
     <p class="card-text">{{detalhes.descricao}}</p>
     
     <form action="/lista/remove/{{detalhes.id}}" method="post">
-      <input type="submit" value="Remover" class="btn btn-danger" />
+      <input type="submit" value="Remover" class="btn btn-danger mb-3" />
     </form>
+    <a href="/detalhes/edit/{{detalhes.id}}" class="btn btn-info">Editar</a>
   </div>
 </div>

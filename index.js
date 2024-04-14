@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql2 = require("mysql2");
 
+
 const app = express();
 
 // Confira o middleware para verificar solicitações com o tipo conteúdo body
@@ -87,10 +88,31 @@ app.post('/lista/remove/:id', (req, res) => {
   })
 });
 
+//vai para página de edição por ID
+app.get('/detalhes/edit/:id', (req, res) => {
+
+  const id = req.params.id;
+  
+  const sql = `SELECT * FROM produtos WHERE id = ${id}`;
+
+  conn.query(sql, function(err, data) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    const listaDetalhes = data[0];
+
+    res.render('editdetalhes', { listaDetalhes })
+  });
+
+
+});
+
 const conn = mysql2.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "mercadinho"
 });
 
