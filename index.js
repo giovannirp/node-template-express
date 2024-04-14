@@ -105,9 +105,26 @@ app.get('/detalhes/edit/:id', (req, res) => {
 
     res.render('editdetalhes', { listaDetalhes })
   });
-
-
 });
+
+// Atualizando função
+app.post('/detalhes/updatelista', (req, res) => {
+  const id = req.body.id;
+  const produto = req.body.produto;
+  const preco = req.body.preco;
+  const descricao = req.body.descricao;
+
+  const sql = `UPDATE produtos set produto = '${produto}', preco = '${preco}', descricao = '${descricao}' where id = '${id}'`;
+
+  conn.query(sql, function(err) {
+    if (err) {
+      console.log("novo erro", err);
+      return;
+    }
+
+    res.redirect('/lista');
+  })
+})
 
 const conn = mysql2.createConnection({
   host: "localhost",
